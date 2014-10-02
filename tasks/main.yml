@@ -1,0 +1,15 @@
+---
+# Installs PHP
+
+- name: install php
+  apt: update_cache=yes cache_valid_time=3600 pkg={{ item }} state=present # won't update if done under an hour ago
+  with_items:
+    - php5
+    - php5-mcrypt
+    - php5-xdebug
+    - python-configparser  # Required for php.ini configuration
+
+- name: enable mcrypt module
+  file: src=/etc/php5/mods-available/mcrypt.ini dest=/etc/php5/cli/conf.d/mcrypt.ini owner=root group=root state=link
+
+- include: configure-php-ini-cli.yml

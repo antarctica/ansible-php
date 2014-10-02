@@ -1,0 +1,32 @@
+---
+# Configure PHP.ini for CLI environment
+
+- name: configure php-cli - default options
+  ini_file: dest=/etc/php5/cli/php.ini section='{{ item.0.section }}' option='{{ item.1.option }}' value='{{ item.1.value }}'
+  with_subelements:
+    - php_all_ini_default_options
+    - options
+  notify:
+    - Restart Apache
+- name: configure php-cli - user options
+  ini_file: dest=/etc/php5/cli/php.ini section='{{ item.0.section }}' option='{{ item.1.option }}' value='{{ item.1.value }}'
+  with_subelements:
+    - php_all_ini_user_options
+    - options 
+  notify:
+    - Restart Apache
+
+- name: configure php-cli - default options
+  ini_file: dest=/etc/php5/cli/php.ini section='{{ item.0.section }}' option='{{ item.1.option }}' value='{{ item.1.value }}'
+  with_subelements:
+    - php_cli_ini_default_options
+    - options 
+  notify:
+    - Restart Apache
+- name: configure php-cli - user options
+  ini_file: dest=/etc/php5/cli/php.ini section='{{ item.0.section }}' option='{{ item.1.option }}' value='{{ item.1.value }}'
+  with_subelements:
+    - php_cli_ini_user_options
+    - options
+  notify:
+    - Restart Apache 
