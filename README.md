@@ -107,6 +107,7 @@ See [here](http://php.net/manual/en/ini.php) for documentation.
 ### 0.2.4 - October 2014
 
 * Updating dependencies
+* Removing outdated apache handler references
 
 ### 0.2.3 - October 2014
 
