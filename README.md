@@ -104,6 +104,10 @@ See [here](http://php.net/manual/en/ini.php) for documentation.
 
 ## Changelog
 
+### 0.2.4 - October 2014
+
+* Updating dependencies
+
 ### 0.2.3 - October 2014
 
 * Adjusting role for inclusion in BARC
