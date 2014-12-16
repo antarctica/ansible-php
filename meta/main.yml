@@ -3,7 +3,7 @@ galaxy_info:
   description: Installs base PHP language
   author: British Antarctic Survey - Web and Applications Team
   company: British Antarctic Survey
-  license: Open Government Licence V2
+  license: MIT
   min_ansible_version: 1.6
   platforms:
   - name: Ubuntu
@@ -13,10 +13,10 @@ galaxy_info:
 
 armadillo_info:
   name: PHP
-  version: 0.2.4
+  version: 0.2.5
   source: git@stash.ceh.ac.uk:7999/barc/php.git
   dependencies:
-  - git@stash.ceh.ac.uk:7999/barc/core.git#v0.4.2
+  - git@stash.ceh.ac.uk:7999/barc/core.git#v0.5.1
 
 dependencies:
   - core

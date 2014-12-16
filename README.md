@@ -10,56 +10,23 @@ Installs base PHP language
 * Explicitly enables the `mcrypt` module (others are auto-enabled)
 * Configures the `php.ini` file for the CLI interface.
 
-## Author
-
-[British Antarctic Survey](http://www.antarctica.ac.uk) - Web & Applications Team
-
-Contact: [basweb@bas.ac.uk](mailto:basweb@bas.ac.uk).
-
 ## Availability
 
 This role is designed for internal use but if useful can be shared publicly.
 
-## Branches
+## Usage
 
-This project uses three permanent branches with the *Git Flow* branching model managing the interaction between branches.
+### Requirements
 
-* **Develop:** unstable, potentially non-working but most current version of roles. Bug fixes and features interact with this branch only.
-* **Master:** stable, tested, working version of role with full documentation. Releases and hot fixes mainly interact with this branch. This branch should when consuming roles internally.
-* **Public:** equivalent to the *master* branch, but available externally. Some configuration details may be altered or features removed to make available for public release.
-
-## Testing
-
-Manual testing is performed for all roles to ensure roles achieve their aims and this forms a prerequisite task for merging changes into the *master* and *public* branches.
-Wherever possible testing is as complete as possible meaning tasks such as downloading dependencies are performed as part of each test.
-
-## Issues
-
-Please log issues to the [BAS Web and Applications Team](https://jira.ceh.ac.uk/browse/BASWEB) project in Jira, within the *Project - Ansible Roles* component.
-
-If outside of NERC please get in touch to report any issues.
-
-## Contributions
-
-We have no formal contribution policy, if you spot any bugs or potential improvements please submit a pull request or get in touch.
-
-These roles are used for internal projects which may dictate whether any contributions can be included.
-
-## License
-
-[Open Government Licence V2](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/)
-
-## Requirements
-
-### BAS Ansible Role Collection (BARC)
+#### BAS Ansible Role Collection (BARC)
 
 * `core`
 
-## Variables
+### Variables
 
-### PHP interface `.ini` configuration (CLI, apache, etc.)
+#### PHP interface `.ini` configuration (CLI, apache, etc.)
 
-#### Overview
+##### Overview
 
 Each PHP *interface* (e.g. CLI, Apache, etc.) uses a `php.ini` to control default settings, logging, enabled modules, resource allocations, etc.
 
@@ -71,7 +38,7 @@ Due to a limitation with Ansible's syntax it is not possible to push or pop item
 
 As a workaround two variables are used, a defaults array and a user array. The defaults array is run before the user array (which is by default empty). This means if you wanted to change a default value you would copy the array item from the default array into the user array with the override value.
 
-#### All interfaces
+##### All interfaces
 
 Some `.ini` values should be changed in all implementations. To support this a *global* and *implementation specific* set of default and user variables are used.
 
@@ -99,7 +66,7 @@ Some `.ini` values should be changed in all implementations. To support this a *
                 * Value for option in ini file (e.g. "On") 
     * Default: "[]  (empty array)" 
 
-#### CLI interface `cli/php.ini`
+##### CLI interface `cli/php.ini`
 
 See [here](http://php.net/manual/en/ini.php) for documentation.
 
@@ -125,47 +92,24 @@ See [here](http://php.net/manual/en/ini.php) for documentation.
                 * Name of option in ini file (e.g. "display_errors") 
             * `value`
                 * Value for option in ini file (e.g. "On") 
-    * Default: "[]  (empty array)" 
-
-## Changelog
-
-### 0.2.4 - October 2014
-
-* Updating dependencies
-* Removing outdated apache handler references
-* Preparing role for public release
-
-### 0.2.3 - October 2014
-
-* Adjusting role for inclusion in BARC
-
-### 0.2.2 - September 2014
-
-* Fixing `mcrypt` module loading
-
-### 0.2.1 - August 2014
-
-* Mail support has been extracted to relevant roles (currently only php-msmtp) since this isn't something unique to PHP (sending mail)
-
-### 0.2.0 - August 2014
-
-* Adopting new method of setting PHP ini config options using the ansible ini module
-* This allows any config option to be set without first converting to an ansible variable
-* Templating is now longer used as the ini file is modified directly
-* Global config options (defined in this role) that apply to all implementations (CLI, apache, etc.) and per-implementation option variables are used to reuse defaults efficiently
-* Specific variables are provided to override any default (either global or implementation specific) options where needed without having to also replicate other default variables not being overridden
-
-### 0.1.1 - June 2014
-
-* Fixing templating of PHP CLI file
-
-### 0.1.0 - June 2014
-
-* Initial version
+    * Default: "[]  (empty array)"
 
 
 
+## Developing
 
+### Committing changes
 
+The [Git flow](https://github.com/fzaninotto/Faker#formatters) workflow is used to manage development of this package.
+
+Discrete changes should be made within *feature* branches, created from and merged back into *develop* (where small one-line changes may be made directly).
+
+When ready to release a set of features/changes create a *release* branch from *develop*, update documentation as required and merge into *master* with a tagged, [semantic version](http://semver.org/) (e.g. `v1.2.3`).
+
+After releases the *master* branch should be merged with *develop* to restart the process. High impact bugs can be addressed in *hotfix* branches, created from and merged into *master* directly (and then into *develop*).
+
+### Issue tracking
+
+Issues, bugs, improvements, questions, suggestions and other tasks related to this package are managed through the BAS Web & Applications Team Jira project ([BASWEB](https://jira.ceh.ac.uk/browse/BASWEB)).
 
 
