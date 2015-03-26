@@ -38,7 +38,7 @@ A python `.ini` plugin is used to parse and alter `php.ini` files for each SAPI,
 
 An array of objects which represent options in the `.ini` file is used to selectively change options. Each object contains a reference to the `.ini` option and its updated value. The array of objects is an Ansible array and is configured like any other complex variable.
 
-Due to a limitation with Ansible's syntax it is not possible to push or pop items from  array's. Therefore to override the default value of an Ansible object it would be necessary to replicate the entire Ansible array, including all other items you don't want to change, which, again, is tedious and hard to maintain (changing the default array directly is against best practice).
+Due to a limitation with Ansible's syntax, it is not possible to push or pop items from array's. Therefore to override the default value of an Ansible object it would be necessary to replicate the entire Ansible array, including all other items you don't want to change, which, again, is tedious and hard to maintain (changing the default array directly is against best practice).
 
 As a workaround two variables are used, a defaults array and a user array. The defaults array is run before the user array (which is by default empty). This means if you wanted to change a default value you would copy the array item from the default array into the user array with the override value.
 
@@ -48,27 +48,26 @@ Some `.ini` values should be changed in all SAPIs. To support this a *global* an
 
 * `php_all_ini_default_options`
 	* These options are defaults for all PHP SAPIs, this variable is effectively the highest level of option setting (applies to all SAPIs and will be used by default).
-    * **Do not override this variable**, use `php_all_ini_user_options` instead.
     * **Do NOT override this variable**, use `php_all_ini_user_options` instead.
     * Structured as an array of items where each item consists of a section name string and array of options and values:
         * `section`  
-            * Name of section in ini file (e.g. "Error handling and logging")
+            * Name of section in INI file (e.g. "Error handling and logging")
         * `options` [array]
             * `option`
-                * Name of option in ini file (e.g. "display_errors") 
+                * Name of option in INI file (e.g. "display_errors") 
             * `value`
-                * Value for option in ini file (e.g. "On") 
+                * Value for option in INI file (e.g. "On") 
     * Default: (see variable)
 * `php_all_ini_user_options`
     * Use to change values set in `php_all_ini_default_options` or where you want to change an option for all PHP SAPIs.
     * Structured as an array of items where each item consists of a section name string and array of options and values:
         * `section`  
-            * Name of section in ini file (e.g. "Error handling and logging")
+            * Name of section in INI file (e.g. "Error handling and logging")
         * `options` [array]
             * `option`
-                * Name of option in ini file (e.g. "display_errors") 
+                * Name of option in INI file (e.g. "display_errors") 
             * `value`
-                * Value for option in ini file (e.g. "On") 
+                * Value for option in INI file (e.g. "On") 
     * Default: "[]  (empty array)" 
 
 ##### CLI SAPI `cli/php.ini`
@@ -76,27 +75,27 @@ Some `.ini` values should be changed in all SAPIs. To support this a *global* an
 See [here](http://php.net/manual/en/ini.php) for documentation.
 
 * `php_cli_ini_default_options`
-    * **Do not override this variable**, use `php_cli_ini_user_options` instead.
     * Default values for the CLI PHP SAPI.
+    * **Do NOT override this variable**, use `php_cli_ini_user_options` instead.
     * Structured as an array of items where each item consists of a section name string and array of options and values:
         * `section`  
-            * Name of section in ini file (e.g. "Error handling and logging")
+            * Name of section in INI file (e.g. "Error handling and logging")
         * `options` [array]
             * `option`
-                * Name of option in ini file (e.g. "display_errors") 
+                * Name of option in INI file (e.g. "display_errors") 
             * `value`
-                * Value for option in ini file (e.g. "On") 
+                * Value for option in INI file (e.g. "On") 
     * Default: (see variable)
 * `php_cli_ini_user_options`
     * Use to change values set in `php_cli_ini_default_options` or where you want to change an option for the PHP CLI interface.
     * Structured as an array of items where each item consists of a section name string and array of options and values:
         * `section`  
-            * Name of section in ini file (e.g. "Error handling and logging")
+            * Name of section in INI file (e.g. "Error handling and logging")
         * `options` [array]
             * `option`
-                * Name of option in ini file (e.g. "display_errors") 
+                * Name of option in INI file (e.g. "display_errors") 
             * `value`
-                * Value for option in ini file (e.g. "On") 
+                * Value for option in INI file (e.g. "On") 
     * Default: "[]  (empty array)"
 
 ## Contributing
