@@ -19,11 +19,11 @@ php_all_ini_default_options:
       - option: error_reporting
         value: "E_ALL & ~E_DEPRECATED"
       - option: display_errors
-        value: On
+        value: "Off"
       - option: display_startup_errors
-        value: Off
+        value: "Off"
       - option: log_errors
-        value: On
+        value: "On"
   - section: "Data Handling"
     options:
       - option: post_max_size
@@ -31,7 +31,7 @@ php_all_ini_default_options:
   - section: "File Uploads"
     options:
       - option: file_uploads
-        value: On
+        value: "On"
       - option: upload_max_filesize
         value: 2M
       - option: max_file_uploads
@@ -40,6 +40,25 @@ php_all_ini_default_options:
     options:
       - option: date.timezone
         value: "Europe/London"
+  - section: "Session"
+    options:
+      - option: session.cookie_httponly
+        value: "On"
+      - option: session.cookie_secure
+        value: "On"
+      - option: session.hash_function
+        value: "sha256"
+      - option: session.use_strict_mode
+        value: "On"
+  - section: "Fopen wrappers"
+    options:
+      - option: allow_url_fopen
+        value: "Off"
+  - section: "PHP"
+    options:
+      - option: expose_php
+        value: "Off"
+
 php_all_ini_user_options: []
 
 # These variables apply only to the CLI ini file
