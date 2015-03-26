@@ -8,7 +8,7 @@ Installs base PHP language
 
 * Installs PHP packages with `mcrypt` and `xdebug` modules and python tools for managing `.ini` files.
 * Explicitly enables the `mcrypt` module (others are auto-enabled)
-* Configures the `php.ini` file for the CLI interface.
+* Configures the `php.ini` file for the CLI interface using recommended settings to improve security over default options.
 
 ## Availability
 
@@ -21,6 +21,10 @@ This role is designed for internal use but if useful can be shared publicly.
 #### BAS Ansible Role Collection (BARC)
 
 * `core`
+
+### Limitations
+
+By default the [allow_url_fopen](http://php.net/manual/en/filesystem.configuration.php) function is disabled within all INI files, i.e. regardless of which SAPI is used. This is for security reasons and should ideally not be re-enabled without good reason. If you need to consume data from a URL please consider using a HTTP library (e.g. [Guzzle](http://guzzle.readthedocs.org/en/latest/) or simply [cURL](http://php.net/manual/en/curl.examples-basic.php)).
 
 ### Variables
 
