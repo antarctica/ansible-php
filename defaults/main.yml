@@ -19,7 +19,7 @@ php_all_ini_default_options:
       - option: error_reporting
         value: "E_ALL & ~E_DEPRECATED"
       - option: display_errors
-        value: On
+        value: Off
       - option: display_startup_errors
         value: Off
       - option: log_errors
