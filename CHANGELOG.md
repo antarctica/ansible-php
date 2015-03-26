@@ -3,6 +3,7 @@
 ## 1.0.0 - March 2015
 
 * Updating variable defaults to disable error reporting by default
+* Correcting variable conversion
 
 ## 0.2.5 - December 2014
 
